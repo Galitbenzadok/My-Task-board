@@ -1,0 +1,74 @@
+body {
+    background-image: url("../../images/mainbg.jpg");
+    background-color: lightyellow;
+   }
+.pageTitle {
+    color: white;
+    font-weight: 30px;
+    font-family: Comic Sans MS, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.container {
+    text-align: center;
+    line-height: 30px;
+    margin-left: 170px;
+    width: 1000px;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    overflow: auto;
+    display: inline-block;
+    background-image: url("../../images/card.png");
+    background-position: 0%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+
+}
+.addTask {
+    padding: 20px;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 100px;
+    color: white;
+    background-color: #1DB9C3;
+    width: 50%;
+    height: 240px;
+    border: 1px solid black;
+    border-radius: 10px;
+    
+}
+input {
+    height: 30px;
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+label {
+    width: 120px;
+}
+.newTask {
+    font-size: 25px;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-sm{
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.innerTask {
+   width: 150px;
+   height:140px;
+   border: 1px solid black;
+   position: relative;
+   top: 30px;
+   left: 30px;
+}
