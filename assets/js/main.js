@@ -42,16 +42,25 @@ function creatTask(text){
 
 function creatCard(){
     const taskContentDiv = document.createElement('div')
+    const deleteDiv = document.createElement('div')    
     let task
+    let deleteBut
 
     for (let i in tasks){
-        task = creatTask(tasks[i])
-        console.log(tasks[i])
+        task = creatTask(tasks[i])  
+        deleteDiv.innerHTML = "<button class='deleteBut' onclick = 'ShowOrHideDeleteBut()'>X</button>"
+        // deleteDiv.click = ShowOrHideDeleteBut()
     }
     taskContentDiv.appendChild(task)
+    taskContentDiv.appendChild(deleteDiv)
     taskContentDiv.classList.add('card')
     return taskContentDiv
 }
+
+// function ShowOrHideDeleteBut(){
+//     const butDel = document.querySelector('.deleteBut')
+//     butDel.classList.add('hidden')    
+// }
 
 function randerTasks(){
     const div = document.querySelector('.cards')    

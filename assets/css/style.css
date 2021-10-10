@@ -99,6 +99,7 @@ label {
     font-size: 12px;
     font-weight:bold;
     line-height: 20px;
+    color:floralwhite;
 }
 
 ::-webkit-scrollbar {
@@ -118,3 +119,18 @@ label {
     background: #555; 
   }
 
+  .deleteBut {
+      font-size: 11px;
+     background-color: white;
+      font-weight:bold;
+      position: relative;
+      top: -125px;
+      left: 88px; 
+      border: 2px solid black;
+      border-radius: 3px;
+      line-height: 20px;    
+  }
+
+  .hidden {
+      display: none;
+  }
