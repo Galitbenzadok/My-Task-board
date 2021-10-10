@@ -1,11 +1,11 @@
 body {
     background-image: url("../../images/mainbg.jpg");
     background-color: lightyellow;
+    font-family: Comic Sans MS, sans-serif;
    }
 .pageTitle {
     color: white;
     font-weight: 30px;
-    font-family: Comic Sans MS, sans-serif;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -20,7 +20,7 @@ body {
     width: 200px;
     height: 200px;
     margin: 20px;
-    overflow: auto;
+    /* overflow: auto; */
     display: inline-block;
     background-image: url("../../images/card.png");
     background-position: 0%;
@@ -29,6 +29,7 @@ body {
     border: 1px solid black;
 
 }
+
 .addTask {
     padding: 20px;
     text-align: left;
@@ -36,21 +37,22 @@ body {
     font-weight: 100px;
     color: white;
     background-color: #1DB9C3;
-    width: 50%;
-    height: 240px;
+    max-width: 500px;
+    min-height: 240px;
     border: 1px solid black;
     border-radius: 10px;
     
 }
 input {
-    height: 30px;
-    width: 250px;
+    min-height: 30px;
+    min-width: 270px;
     border: 2px solid black;
     border-radius: 3px;
 }
 label {
     width: 120px;
 }
+
 .newTask {
     font-size: 25px;
     line-height: 20px;
@@ -65,10 +67,54 @@ label {
 }
 
 .innerTask {
-   width: 150px;
-   height:140px;
-   border: 1px solid black;
-   position: relative;
-   top: 30px;
-   left: 30px;
+   max-width: 170px;
+   max-height: 130px;
+   text-align: left;
+   margin-top: 45px;
+   margin-left: 12px;   
+   overflow: auto;
+   opacity: 1;
+   animation-name: fadeInOpacity;
+   animation-iteration-count: 1;
+   animation-timing-function: ease-in;
+   animation-duration: 2s;
 }
+
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.taskText {
+    margin-bottom: 10px;
+    line-height: 25px;
+}
+
+.smallerFont{
+    font-size: 12px;
+    font-weight:bold;
+    line-height: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: white; 
+  }
+   
+
+  ::-webkit-scrollbar-thumb {
+    background: white;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+

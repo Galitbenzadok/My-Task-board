@@ -17,29 +17,17 @@
             <div><label for="task">Task:</label><input type="text" name="task" id="task"></div>
             <div><label for="date">Date of Task: </label><input type="date" name="date" id="date"></div>
             <div><label for="time">Time of Task: </label><input type="time" name="time" id="time"></div>
-            <div><button type="button" class="btn-sm" name="saveTask">Save Task</button>
-            <button type="button" class="btn-sm" name="saveTask">Delete Task</button></div>
-
+            <div><button type="button" class="btn-sm" name="save" onclick="saveTask()">Save Task </button>
+            <button type="button" class="btn-sm" name="Delete" onclick="deleteForm()">Delete Form</button></div>
         </form>
     </div>
-    <div class="row">
-        <div class="card"><div class="innerTask">text</div></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+    <div class="row cards">
     </div>
   
 
 </div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery3.2.1/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>
