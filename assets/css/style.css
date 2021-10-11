@@ -10,7 +10,7 @@ body {
     margin-bottom: 30px;
 }
 .container {
-    text-align: center;
+    text-align: left;
     line-height: 30px;
     margin-left: 170px;
     width: 1000px;
@@ -26,7 +26,6 @@ body {
     background-size: 100%;
     background-repeat: no-repeat;
     border: 1px solid black;
-
 }
 
 .addTask {
@@ -138,4 +137,9 @@ label {
 
   .hidden {
       display: none;
+  }
+
+  .messageToUser {
+      color:maroon;
+      font-weight: bold;
   }

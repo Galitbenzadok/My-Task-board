@@ -1,48 +1,101 @@
-let tasks = []
 
-let id = 0
+let tasks = getArrayFromLocalStorage()
+console.log(tasks)
+let id = localStorage.getItem('id')
+id = Math.floor(id)
 
-function saveTask() {
+// function clearLocalStorage(tasks) {    
+//    localStorage.clear()
+// }
+// clearLocalStorage(tasks)
+
+function checkId(){    
+    if (id === ''){
+        id = 0
+    }
+    else {
+        id = id + 1       
+    }
+    return id
+}
+
+renderTasks() 
+
+
+function saveTask() {  
+    let id = checkId()    
     const form = document.querySelector('form')
-    let task = {} 
-    const taskId = id
-    const taskContent = form.elements['task'].value
-    const dateOfTask = form.elements['date'].value
-    const timeOfTask = form.elements['time'].value
+    const divMess = document.querySelector('.messageToUser')
+    const message = document.createElement('div')
+    divMess.innerHTML = ''
+    divMess.appendChild(message)
+    
+    const cheakForm = ifEmpty()
+    
+    if (cheakForm){      
+        
+        message.innerHTML = ''    
+        divMess.appendChild(message)
+        let task = {} 
+        const taskId = id
+        const taskContent = form.elements['task'].value
+        const dateOfTask = form.elements['date'].value
+        const timeOfTask = form.elements['time'].value
 
-    task.taskContent = taskContent
-    task.dateOfTask = dateOfTask
-    task.timeOfTask = timeOfTask
-    task.taskId = id
-    id++
+        task.taskContent = taskContent
+        task.dateOfTask = dateOfTask
+        task.timeOfTask = timeOfTask
+        task.taskId = id
+       
+        
+        tasks.push(task)
+        renderTasks()  
+        const tasksStringify = JSON.stringify(tasks)      
+        localStorage.setItem('tasks', tasksStringify) 
+        localStorage.setItem('id', id)        
+               
+    }
+    else {
+            message.innerHTML = "Please fill all the details." 
+            divMess.appendChild(message)           
+    }   
+               
 
-    // tasks = getArrayFromLocalStorage()
-    tasks.push(task)
-    // const tasksStringify = JSON.stringify(tasks)
-    // localStorage.setItem('tasks', tasksStringify)  
-    renderTasks()     
+}
+
+function ifEmpty(){
+    const form = document.querySelector('form')
+    if (
+        form.elements['task'].value != '' &&
+        form.elements['date'].value != '' &&
+        form.elements['time'].value != ''){
+            return true
+        }
+        return false   
 }
 
 
-// function getArrayFromLocalStorage() {
-//     const arrayStringify = localStorage.getItem('tasks')
-//     let array
-//     if (arrayStringify) {
-//         array = JSON.parse(arrayStringify)
-//     }
-//     else {
-//         array = []
-//     }
-//     return array
-// }
+function getArrayFromLocalStorage() {
+    const arrayStringify = localStorage.getItem('tasks')
+    let array
+    if (arrayStringify) {        
+        array = JSON.parse(arrayStringify)
+    }
+    else {
+        array = []
+    }
+    return array
+}
 
 
 function creatTask(text){
     const mainDiv = document.createElement('div')
     mainDiv.setAttribute('id', text.taskId)
     mainDiv.classList.add ('innerTask')
-    const id = text.taskId
-
+    const containerDiv = document.createElement('div')
+    containerDiv.classList.add ('card')
+    const id = localStorage.getItem('id')
+   
     const taskContentDiv = document.createElement('div')
     taskContentDiv.innerHTML = text.taskContent
     taskContentDiv.classList.add ('taskText')   
@@ -61,28 +114,26 @@ function creatTask(text){
     const deleteDiv = document.createElement('div') 
     deleteDiv.innerHTML = "<button class='deleteBut hidden' id='but" + id + "' onclick='deleteTask(" + id + ")'>X</button>"
     mainDiv.appendChild(deleteDiv)  
+ 
 
     mainDiv.addEventListener("mouseover", function() {showDeleteBut(id)});
     mainDiv.addEventListener("mouseout", function() {hideDeleteBut(id)});
 
-    return mainDiv
+    containerDiv.appendChild(mainDiv)
+    taskContentDiv.setAttribute('id', 'div' + id)
+
+    return containerDiv
 }
 
-function creatCard(){
+function creatCards(){
     const taskContentDiv = document.createElement('div')
-    taskContentDiv.classList.add('card')
-    const deleteDiv = document.createElement('div') 
-    let taskFill
-    let butId
-   
+    let taskFill  
+    
     for (let i=0; i<tasks.length; i++){
-        taskFill = creatTask(tasks[i]) 
-        butId = i       
-    }
+        taskFill = creatTask(tasks[i])            
+        taskContentDiv.appendChild(taskFill)       
+    }                 
 
-    taskContentDiv.appendChild(taskFill)  
-    taskContentDiv.appendChild(deleteDiv)  
-    taskContentDiv.setAttribute('id', 'div' + butId)
     return taskContentDiv
 }
 
@@ -99,8 +150,7 @@ tasks = nTasks
 const deleletCard = document.getElementById('div'+ numToDelete)
 deleletCard.remove()
 }
-  
- 
+   
 function showDeleteBut(num){
     const but = document.getElementById('but'+ num)
     but.classList.remove('hidden')
@@ -111,10 +161,10 @@ function hideDeleteBut(num){
     but.classList.add('hidden')
  }
 
-function renderTasks(){
-    // tasks = getArrayFromLocalStorage()
-    const div = document.querySelector('.cards')    
-    const cards  = creatCard(tasks)
+function renderTasks(){    
+    const div = document.querySelector('.cards')   
+    div.innerHTML = '' 
+    const cards  = creatCards(tasks)
     div.appendChild(cards)
 }
 
@@ -123,7 +173,7 @@ function deleteForm(){
     form.reset()
 }
 
-// renderTasks() 
+
 
 
 
