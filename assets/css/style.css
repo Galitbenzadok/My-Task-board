@@ -45,7 +45,7 @@ input {
     min-height: 30px;
     min-width: 270px;
     border-bottom: 2px solid black;
-    /* border-radius: 3px; */
+    border-radius: 3px;   
 }
 [placeholder]:focus::-webkit-input-placeholder {
     transition: text-indent 0.4s 0.4s ease; 
@@ -71,12 +71,11 @@ label {
 }
 
 .innerTask {
-   max-width: 170px;
+   max-width: 160px;
    max-height: 130px;
    text-align: left;
    margin-top: 45px;
-   margin-left: 12px;   
-   overflow: auto;
+   margin-left: 12px;      
    opacity: 1;
    animation-name: fadeInOpacity;
    animation-iteration-count: 1;
@@ -97,6 +96,8 @@ label {
 .taskText {
     margin-bottom: 10px;
     line-height: 25px;
+    height: 80px;   
+    overflow: auto;
 }
 
 .smallerFont{
@@ -128,8 +129,8 @@ label {
      background-color: white;
      font-weight:bold;
      position: absolute;
-     top: 29px;
-     right:15px;
+     top: 26px;
+     right: 12px;
      border: 2px solid black;
      border-radius: 3px;
      line-height: 20px;    
