@@ -90,12 +90,11 @@ function getArrayFromLocalStorage() {
 
 function creatTask(text){
     const mainDiv = document.createElement('div')
-    mainDiv.setAttribute('id', text.taskId)
     mainDiv.classList.add ('innerTask')
     const containerDiv = document.createElement('div')
     containerDiv.classList.add ('card')
-    const id = localStorage.getItem('id')
-   
+    const id = text.taskId
+         
     const taskContentDiv = document.createElement('div')
     taskContentDiv.innerHTML = text.taskContent
     taskContentDiv.classList.add ('taskText')   
@@ -112,15 +111,16 @@ function creatTask(text){
     mainDiv.appendChild(timeOfTaskDiv)  
     
     const deleteDiv = document.createElement('div') 
-    deleteDiv.innerHTML = "<button class='deleteBut hidden' id='but" + id + "' onclick='deleteTask(" + id + ")'>X</button>"
+    deleteDiv.innerHTML = "<button class='deleteBut' id='but" + id + "' onclick='deleteTask(" + id + ")'>X</button>"
     mainDiv.appendChild(deleteDiv)  
- 
-
-    mainDiv.addEventListener("mouseover", function() {showDeleteBut(id)});
-    mainDiv.addEventListener("mouseout", function() {hideDeleteBut(id)});
+    
 
     containerDiv.appendChild(mainDiv)
     taskContentDiv.setAttribute('id', 'div' + id)
+
+    containerDiv.addEventListener("mouseover", function() {showDeleteBut(id)});
+    containerDiv.addEventListener("mouseout", function() {hideDeleteBut(id)});
+
 
     return containerDiv
 }
@@ -138,6 +138,10 @@ function creatCards(){
 }
 
 function deleteTask(numToDelete){   
+
+    const deleletCard = document.getElementById('div'+ numToDelete)
+    deleletCard.remove()
+    
     const nTasks = tasks.filter(
         function (obj){
             if (obj.taskId != numToDelete){               
@@ -147,8 +151,10 @@ function deleteTask(numToDelete){
         }
     )
 tasks = nTasks
-const deleletCard = document.getElementById('div'+ numToDelete)
-deleletCard.remove()
+const tasksStringify = JSON.stringify(tasks)      
+localStorage.setItem('tasks', tasksStringify) 
+renderTasks()
+
 }
    
 function showDeleteBut(num){
