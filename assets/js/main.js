@@ -1,14 +1,9 @@
 
 let tasks = getArrayFromLocalStorage()
-console.log(tasks)
 let id = localStorage.getItem('id')
 id = Math.floor(id)
 renderTasks() 
 
-// function clearLocalStorage(tasks) {    
-//    localStorage.clear()
-// }
-// clearLocalStorage(tasks)
 
 function checkId(){    
     if (id === ''){
